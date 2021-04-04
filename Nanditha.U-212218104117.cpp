@@ -28,12 +28,6 @@ void MainWindow::on_pushButton_clicked()
     QMessageBox::StandardButton reply= QMessageBox::information(this,"Nanditha","212218104117 SUCCESSFULLY COMPLETED");
 }
 
-void MainWindow::on_lineEdit_8_textChanged(const QString &link)
-{
-    ui->lineEdit->setValidator(new QIntValidator(50,100,ui->lineEdit));
-
-}
-
 
 void MainWindow::on_radioButton_clicked()
 {
@@ -47,4 +41,16 @@ void MainWindow::on_radioButton_clicked()
     qDebug() <<group.checkedId();
     qDebug() <<group.checkedButton();
 }
+
+void MainWindow::on_lineEdit_8_returnPressed()
+{
+    QRegularExpression re("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$");
+           QRegularExpressionMatch match = re.match(ui->lineEdit_3->text());
+           bool hasMatch = match.hasMatch();
+           if (!hasMatch)
+           {
+              QMessageBox::information(this,"Nanditha","Invalid entry !");
+           }
+}
+
 
